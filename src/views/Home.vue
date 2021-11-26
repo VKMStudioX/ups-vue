@@ -1,18 +1,24 @@
 <template>
-  <div class="home">
-    <Header />
+  <div>
+    <div class="home">
+      <Header />
 
-    <div className="home-search">
-      <Search />
+      <div class="home-search">
+        <Search />
+      </div>
+
+      <img
+        v-if="!loading && randomPhoto"
+        :key="loading"
+        class="home-image"
+        :alt="randomPhoto.alt_description"
+        :src="randomPhoto.urls.full"
+      />
+
+      <div className="home-footer">
+        <Footer />
+      </div>
     </div>
-
-    <img
-      v-if="!loading && randomPhoto"
-      :key="loading"
-      class="home-image"
-      :alt="randomPhoto.alt_description"
-      :src="randomPhoto.urls.full"
-    />
   </div>
 </template>
 
@@ -21,6 +27,7 @@ import { useStore } from "vuex";
 import { ref, onBeforeMount, computed } from "vue";
 import Header from "../components/Header.vue";
 import Search from "../components/Search.vue";
+import Footer from "../components/Footer.vue";
 
 export default {
   name: "Home",
@@ -33,20 +40,14 @@ export default {
       await store
         .dispatch("unsplash/getRandomPhoto")
         .then(
-          () => {
-            loading.value = false;
-          },
-          (error) => {
-            console.error(error);
-          }
+          () => (loading.value = false),
+          (error) => console.error(error)
         )
-        .catch(() => {
-          loading.value = true;
-        });
+        .catch(() => (loading.value = true));
     });
-    return { randomPhoto };
+    return { randomPhoto, loading };
   },
-  components: { Header, Search },
+  components: { Header, Search, Footer },
 };
 </script>
 
@@ -71,6 +72,13 @@ export default {
     width: 100%;
     height: 100vh;
     object-fit: cover;
+  }
+
+  &-footer {
+    position: absolute;
+    top: 90vh;
+    display: block;
+    width: 100%;
   }
 }
 </style>
