@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="home">
+    <div v-if="!loading && randomPhoto" class="home">
       <Header />
 
       <div class="home-search">
@@ -8,15 +8,21 @@
       </div>
 
       <img
-        v-if="!loading && randomPhoto"
-        :key="loading"
         class="home-image"
         :alt="randomPhoto.alt_description"
-        :src="randomPhoto.urls.full"
+        :src="randomPhoto.urls.regular"
       />
 
-      <div className="home-footer">
-        <Footer />
+      <Footer />
+    </div>
+    <div v-else class="home">
+      <div class="home-spinner">
+        <spinner
+          :status="loading"
+          color="#000000"
+          :size="100"
+          :clockwise="true"
+        ></spinner>
       </div>
     </div>
   </div>
@@ -54,14 +60,22 @@ export default {
 <style lang="scss">
 .home {
   position: relative;
+  height: 100vh;
 
   &-search {
     position: absolute;
-    top: 40vh;
+    top: 45vh;
     left: 50%;
     width: 50vh;
     z-index: 100;
     transform: translateX(-50%);
+  }
+
+  &-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   &-image {
@@ -72,13 +86,6 @@ export default {
     width: 100%;
     height: 100vh;
     object-fit: cover;
-  }
-
-  &-footer {
-    position: absolute;
-    top: 90vh;
-    display: block;
-    width: 100%;
   }
 }
 </style>

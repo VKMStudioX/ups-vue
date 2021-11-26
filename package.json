@@ -24,6 +24,7 @@
     "vue-cookies": "^1.7.4",
     "vue-infinite-loading": "^2.4.5",
     "vue-router": "^4",
+    "vue-spinner-component": "^1.0.5",
     "vuex": "^4"
   },
   "devDependencies": {

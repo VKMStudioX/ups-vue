@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="results">
     <Header>
       <template #query>
         <h2 class="header-h2">{{ query }}</h2>
@@ -10,10 +10,6 @@
     </Header>
 
     <Modal v-if="modalState" />
-    <!-- <template #content>
-        <ModalContent />
-      </template>
-    </Modal> -->
 
     <Photos
       :photos="photos"
@@ -21,6 +17,8 @@
       @loadMore="loadMore()"
       @openModalWithPhoto="openModalWithPhoto($event)"
     />
+
+    <Footer />
   </div>
 </template>
 
@@ -28,17 +26,16 @@
 import Search from "../components/Search.vue";
 import Header from "../components/Header.vue";
 import Photos from "../components/Photos.vue";
-// import Modal from "../components/Modal.vue";
+import Footer from "../components/Footer.vue";
 import ModalContent from "../components/ModalContent.vue";
 import { container, openModal } from "jenesius-vue-modal";
-
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
 import { computed, onMounted, watch, ref } from "vue";
 
 export default {
   name: "Results",
-  components: { Search, Header, Photos, Modal: container },
+  components: { Search, Header, Photos, Modal: container, Footer },
   setup() {
     const store = useStore();
     const route = useRoute();
@@ -57,12 +54,6 @@ export default {
         modalState.value = true;
         openModal(ModalContent);
       });
-    };
-
-    const closeModal = () => {
-      modalState.value = false;
-
-      console.log(modalState.value);
     };
 
     const getPhotosDelayed = (newQuery) => {
@@ -117,12 +108,17 @@ export default {
       query,
       photos,
       loadMore,
-      openModalWithPhoto,
-      closeModal,
       modalState,
+      openModalWithPhoto,
     };
   },
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.results {
+  position: relative;
+  height: 100%;
+  margin-top: 8rem;
+}
+</style>

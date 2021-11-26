@@ -44,12 +44,13 @@ export default {
 
 <style lang="scss">
 .header {
+  position: fixed;
+  top: 0px;
   display: grid;
   width: 100%;
   padding: 0.25rem;
   border-bottom: 1px #000;
   background-color: rgba(131, 131, 131, 0.1);
-
   &-home {
     padding: 2rem;
     grid-template-columns: repeat(1, 1fr);
@@ -67,8 +68,9 @@ export default {
     grid-template-columns: repeat(3, 1fr);
     box-shadow: 0px 2px 2px 2px rgba(136, 136, 136, 0.75);
     border-bottom: 2px #000;
-    background-color: rgba(131, 131, 131, 0.1);
-    margin-bottom: 2rem;
+    background-color: rgba(131, 131, 131, 0.5);
+    z-index: 100;
+    padding: 0.5rem;
 
     &-box {
       display: flex;

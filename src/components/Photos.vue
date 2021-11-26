@@ -51,6 +51,7 @@ export default {
 }
 
 .photos {
+  position: relative;
   max-width: 90%;
   margin: auto;
   width: 100%;

@@ -155,7 +155,7 @@ export default {
   flex: 1 1 10rem;
   justify-content: center;
   align-items: center;
-  padding: 2rem;
+  padding: 0.25rem;
 
   .form-field {
     position: relative;

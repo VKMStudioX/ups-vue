@@ -44,7 +44,6 @@ export default {
     const imgFull = ref(false);
     const handleImgFull = () => {
       imgFull.value = !imgFull.value;
-      console.log(imgFull.value);
     };
 
     return { dayjs, handleImgFull, modalPhoto, imgFull };
@@ -54,9 +53,11 @@ export default {
 
 <style lang="scss">
 .modal-container {
-  z-index: 100;
+  position: fixed;
+  z-index: 10000;
   border-radius: 10px;
   box-shadow: 0px 2px 2px 4px #ccc;
+  cursor: default !important;
 }
 
 .modal {
@@ -67,7 +68,8 @@ export default {
   z-index: 1000;
   padding: 2rem;
   overflow-y: auto;
-  max-height: 90vh;
+  max-width: 100vw;
+  max-height: 100vh;
 
   &-header {
     display: flex;

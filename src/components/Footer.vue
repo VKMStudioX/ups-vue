@@ -1,10 +1,10 @@
 <template>
-  <div>
-    <footer class="footer">
+  <footer class="footer">
+    <div class="footer-item">
       Coded with love &#10084; in Vue.js <br />
       by VKM Studio / Krzysztof Meyer &copy; 2021<br />
-      for some nice company as recruitment task.
-    </footer>
+      for one nice IT company as recruitment task.
+    </div>
     <svg
       style="visibility: hidden; position: absolute"
       width="0"
@@ -25,7 +25,7 @@
         </filter>
       </defs>
     </svg>
-  </div>
+  </footer>
 </template>
 
 <script>
@@ -36,18 +36,27 @@ export default {
 
 <style lang="scss">
 .footer {
-  font-family: "Open Sans Condensed";
-  font-size: 2rem;
-  line-height: 1.35;
-  font-weight: bold;
-  font-style: italic;
-  display: inline;
-  box-decoration-break: clone;
-  background-color: black;
-  text-shadow: 1px 1px 2 #000;
-  letter-spacing: 1px;
-  color: #a87d2c;
-  padding: 0.5rem 1rem;
-  filter: url("#goo");
+  position: fixed;
+  top: 90vh;
+  left: 0.5vw;
+  display: block;
+  z-index: 100;
+  opacity: 0.5;
+
+  &-item {
+    font-family: "Open Sans Condensed";
+    font-size: 2rem;
+    line-height: 1.35;
+    font-weight: bold;
+    font-style: italic;
+    display: inline;
+    box-decoration-break: clone;
+    background-color: black;
+    text-shadow: 1px 1px 2 #000;
+    letter-spacing: 1px;
+    color: #a87d2c;
+    padding: 0.5rem 1rem;
+    filter: url("#goo");
+  }
 }
 </style>
