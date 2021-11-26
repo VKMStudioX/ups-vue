@@ -9,4 +9,7 @@ Technologies used:
 Vue 3 + Vue Router 4 + Vuex + unsplash-js + axios mainly, and some other kinda packages. 
 No UI Kits, only custom styles.
 
+Live site:
+https://ups-vue.herokuapp.com/
+
 Written with love in Vue by Krzysztof Meyer for LabControl, 2021.
