@@ -18,7 +18,7 @@
       <ul
         class="suggestions-container"
         :class="
-          suggestions && query.length >= 3 && focused
+          suggestions.length > 0 && query.length >= 3 && focused
             ? 'suggestions-expanded'
             : ''
         "

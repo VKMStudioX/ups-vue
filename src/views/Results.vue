@@ -11,12 +11,22 @@
 
     <Modal v-if="modalState" />
 
-    <Photos
-      :photos="photos"
-      :key="photos"
-      @loadMore="loadMore()"
-      @openModalWithPhoto="openModalWithPhoto($event)"
-    />
+    <div v-if="photos.length > 0 && !loading">
+      <Photos
+        :photos="photos"
+        :key="photos"
+        @loadMore="loadMore()"
+        @openModalWithPhoto="openModalWithPhoto($event)"
+      />
+    </div>
+    <div v-else class="results-spinner">
+      <spinner
+        :status="loading"
+        color="#000000"
+        :size="100"
+        :clockwise="true"
+      ></spinner>
+    </div>
 
     <Footer />
   </div>
@@ -48,6 +58,7 @@ export default {
     const photos = ref([]);
     const modalState = ref(false);
     const page = ref(1);
+    const loading = ref(true);
 
     const openModalWithPhoto = (photo) => {
       store.dispatch("unsplash/modalPhoto", photo).then(() => {
@@ -76,12 +87,16 @@ export default {
             newQuery
               ? (photos.value = photosFromStore.value)
               : (photos.value = photos.value.concat(data.response.results));
+            loading.value = false;
           },
           (error) => {
             console.error(error);
+            loading.value = true;
           }
         )
-        .catch(() => {});
+        .catch(() => {
+          loading.value = true;
+        });
     };
 
     const loadMore = () => {
@@ -99,7 +114,7 @@ export default {
         value !== undefined &&
         value !== prevValue
       ) {
-        page.value = 0;
+        page.value = 1;
         getPhotosDelayed(true);
       }
     });
@@ -107,6 +122,7 @@ export default {
     return {
       query,
       photos,
+      loading,
       loadMore,
       modalState,
       openModalWithPhoto,
@@ -120,5 +136,12 @@ export default {
   position: relative;
   height: 100%;
   margin-top: 8rem;
+
+  &-spinner {
+    position: absolute;
+    top: 40vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
 </style>

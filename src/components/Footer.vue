@@ -1,8 +1,13 @@
 <template>
   <footer class="footer">
     <div class="footer-item">
-      Coded with love &#10084; in Vue.js <br />
-      by VKM Studio / Krzysztof Meyer &copy; 2021<br />
+      Coded with love &#10084; in Vue.js
+      <font-awesome-icon :icon="['fab', 'vuejs']" /><br />
+      by
+      <a href="https://vkmstudiox.github.io/" target="_blank" alt="">
+        VKM Studio (Krzysztof Meyer)</a
+      >
+      &copy; 2021<br />
       for one nice IT company as recruitment task.
     </div>
     <svg
@@ -43,20 +48,25 @@ export default {
   z-index: 100;
   opacity: 0.5;
 
-  &-item {
+  &-item,
+  &-item a {
     font-family: "Open Sans Condensed";
     font-size: 2rem;
     line-height: 1.35;
     font-weight: bold;
     font-style: italic;
     display: inline;
+    text-decoration: none;
     box-decoration-break: clone;
     background-color: black;
     text-shadow: 1px 1px 2 #000;
     letter-spacing: 1px;
     color: #a87d2c;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem;
     filter: url("#goo");
+  }
+  &-item a:hover {
+    color: white;
   }
 }
 </style>

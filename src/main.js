@@ -9,9 +9,10 @@ import Spinner from "vue-spinner-component/src/Spinner.vue";
 // FontAwesome
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faVuejs } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 
-library.add(faSearch);
+library.add(faSearch, faVuejs);
 
 createApp(App)
   .use(store)

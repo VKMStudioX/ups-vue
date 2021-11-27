@@ -22,6 +22,7 @@ body {
   background-color: rgba(131, 131, 131, 0.5);
   background: linear-gradient(-45deg, #ccc, #666, #ccc, #666);
   background-size: 400% 400%;
+  min-height: 100vh;
   animation: gradient 15s ease infinite;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
